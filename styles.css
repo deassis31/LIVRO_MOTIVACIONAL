@@ -12,8 +12,10 @@ body {
 }
 
 .book-container {
-    width: 90vw;   /* Ocupa 90% da largura da tela */
-    height: 85vh;  /* Ocupa 85% da altura da tela */
+    width: 95vw;   /* quase largura total da tela */
+    height: 90vh;  /* quase altura total da tela */
+    max-width: 1200px; /* opcional: limitar o tamanho máximo para telas muito largas */
+    max-height: 800px;  /* opcional: limitar altura máxima */
     position: relative;
 }
 
@@ -28,16 +30,8 @@ body {
 .page {
     width: 100%;
     height: 100%;
-    position: absolute;
-    background: #fff8dc;
-    border: 2px solid #f0c27b;
-    border-radius: 15px;
-    padding: 30px;
-    box-sizing: border-box;
-    text-align: left;
-    backface-visibility: hidden;
-    overflow-y: auto;
-    font-size: 20px; /* aumentei o tamanho da fonte para melhor leitura */
+    padding: 40px;    /* maior espaçamento interno */
+    font-size: 22px;  /* aumentar fonte para melhor leitura */
 }
 
 .page::-webkit-scrollbar {
@@ -60,10 +54,7 @@ body {
 
 /* Corações e flores flutuantes */
 .floating {
-    position: absolute;
-    font-size: 25px; /* emojis maiores */
-    opacity: 0.8;
-    animation: float 5s linear infinite;
+    font-size: 30px;  /* emojis/palavras flutuantes maiores */
 }
 
 @keyframes float {
