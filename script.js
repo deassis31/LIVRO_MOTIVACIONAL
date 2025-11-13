@@ -1,32 +1,33 @@
 let currentPage = 0;
-const totalPages = 3;
-const book = document.getElementById('book');
+const pages = document.querySelectorAll('.page');
 
-function showPage(pageIndex) {
-    const rotateY = pageIndex * -180;
-    book.style.transform = `rotateY(${rotateY}deg)`;
+function showPage(index) {
+    pages.forEach((p, i) => {
+        p.classList.remove('active', 'prev');
+        if(i === index) p.classList.add('active');
+        else if(i < index) p.classList.add('prev');
+    });
+    addFloating(pages[index]);
 }
 
+// Inicializa
 showPage(currentPage);
 
 document.getElementById('nextBtn').addEventListener('click', () => {
     currentPage++;
-    if (currentPage >= totalPages) currentPage = 0;
+    if(currentPage >= pages.length) currentPage = 0;
     showPage(currentPage);
-    addFloating(document.getElementById('page' + (currentPage + 1)));
 });
 
 document.getElementById('prevBtn').addEventListener('click', () => {
     currentPage--;
-    if (currentPage < 0) currentPage = totalPages - 1;
+    if(currentPage < 0) currentPage = pages.length -1;
     showPage(currentPage);
-    addFloating(document.getElementById('page' + (currentPage + 1)));
 });
 
 function addFloating(page) {
     const old = page.querySelectorAll('.floating');
     old.forEach(f => f.remove());
-
     const emojis = ['💖','🌸','🌼','💛','🌟','🌷','❤️'];
     for(let i=0;i<15;i++){
         const span = document.createElement('span');
@@ -38,7 +39,4 @@ function addFloating(page) {
         span.style.animationDuration = (3 + Math.random()*4) + 's';
         page.appendChild(span);
     }
-}
-
-// Inicializa a primeira página
-addFloating(document.getElementById('page1'));
+            }
