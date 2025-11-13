@@ -1,1 +1,91 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #fffbe6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    perspective: 1500px; /* necessário para 3D */
+}
 
+.book-container {
+    width: 400px;
+    height: 450px;
+    position: relative;
+}
+
+.book {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #fff8dc;
+    border: 2px solid #f0c27b;
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left;
+    backface-visibility: hidden;
+    overflow-y: auto;
+}
+
+.page::-webkit-scrollbar {
+    width: 6px;
+}
+
+.page::-webkit-scrollbar-thumb {
+    background: #f0c27b;
+    border-radius: 3px;
+}
+
+/* Página de trás (flip) */
+.page:nth-child(odd) {
+    transform: rotateY(0deg);
+}
+
+.page:nth-child(even) {
+    transform: rotateY(180deg);
+}
+
+/* Corações e flores flutuantes */
+.floating {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.8;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.8;}
+    50% { opacity: 1;}
+    100% { transform: translateY(-400px) rotate(360deg); opacity: 0;}
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #f0c27b;
+    color: #fff;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #e6b160;
+}
