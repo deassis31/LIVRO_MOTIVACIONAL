@@ -7,15 +7,15 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
-    perspective: 1500px; /* necessário para 3D */
+    perspective: 1500px;
     overflow: hidden;
 }
 
 .book-container {
-    width: 95vw;   /* quase largura total da tela */
-    height: 90vh;  /* quase altura total da tela */
-    max-width: 1200px; /* opcional: limitar o tamanho máximo para telas muito largas */
-    max-height: 800px;  /* opcional: limitar altura máxima */
+    width: 95vw;   /* quase toda largura da tela */
+    height: 90vh;  /* quase toda altura da tela */
+    max-width: 1200px;
+    max-height: 800px;
     position: relative;
 }
 
@@ -30,8 +30,16 @@ body {
 .page {
     width: 100%;
     height: 100%;
-    padding: 40px;    /* maior espaçamento interno */
-    font-size: 22px;  /* aumentar fonte para melhor leitura */
+    position: absolute;
+    background: #fff8dc;
+    border: 2px solid #f0c27b;
+    border-radius: 15px;
+    padding: 40px;
+    box-sizing: border-box;
+    text-align: left;
+    backface-visibility: hidden;
+    overflow-y: auto;
+    font-size: 22px;
 }
 
 .page::-webkit-scrollbar {
@@ -43,7 +51,6 @@ body {
     border-radius: 4px;
 }
 
-/* Página de trás (flip) */
 .page:nth-child(odd) {
     transform: rotateY(0deg);
 }
@@ -52,9 +59,12 @@ body {
     transform: rotateY(180deg);
 }
 
-/* Corações e flores flutuantes */
+/* Emojis flutuantes */
 .floating {
-    font-size: 30px;  /* emojis/palavras flutuantes maiores */
+    position: absolute;
+    font-size: 30px;
+    opacity: 0.8;
+    animation: float 5s linear infinite;
 }
 
 @keyframes float {
@@ -81,4 +91,4 @@ button {
 
 button:hover {
     background: #e6b160;
-        }
+}
